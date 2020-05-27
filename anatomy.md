@@ -5,13 +5,13 @@ Geting my way into skinning/modding for ETS2 I decided to write down everything 
 
 If you have some Information to share, I did not include, I most probably didn't found it yet, and would like to include. So, just leave a reply. :-)
 
-## SCS-Files themself
-The `.scs` files seem to be archives either in a format called `hashfs` or `zipfs` beeing renamed zip-files. They all store parts of the same 'File-Hirarchy', with scs-files loaded first providing a base and those loaded after extending on it. The later ones are able to override information stored in firsts, if they contain a file in the same path as the earlier one.
+## SCS-Files themselves
+The `.scs` files seem to be archives either in a format called `hashfs` or `zipfs` being renamed zip-files. They all store parts of the same 'File-Hirarchy', with scs-files loaded first providing a base and those loaded after extending on it. The later ones are able to override information stored in firsts, if they contain a file in the same path as the earlier one.
 
 ### Formats
 `hashfs` is the format the 'orginal' scs-files are in. They can be extracted using the (famous) [scs_extractor.exe](https://modding.scssoft.com/wiki/Documentation/Tools/Game_Archive_Extractor) you can get from the SCS Modding Wiki. Also I've found no way yet to create those archives, there must be one since some of the promods scs-files are in the same format.
 
-`zipfs` on the other hand do seem to be just renamed zip-files. I've found no real evidence jet which copresseon and zip settings ETS2 supports, and which are problematic. If you have trouble creating those, this document may be beyond your scope.
+`zipfs` on the other hand do seem to be just renamed zip-files. I've found no real evidence jet which compression and zip settings ETS2 supports, and which are problematic. If you have trouble creating those, this document may be beyond your scope.
 
 ### Load Order
 On my ETS2 installation the load order of the base game seems to be (according to `game.log.txt`)
@@ -51,8 +51,22 @@ Once you have at lest one scs-file you'll find yourself in the file-hierarchy de
 
 The structure and files there look like holding everything together. Their position and names seem to be well defined handles the game searches for. Most of the other stuff is referenced from there, directly or indirectly.
 
+### sii-files
+
+### sui-files
+
+## Objects
+
+### pmd-files
+
+### pmc-files
+
+### pma-files
 
 ## Textures
+
+### mat-files
+automat
 
 ### tobj-files
 tobj-files are binary files, containing one ore more strings, referencing dds-files by their absolute path in the file-hierarchy. There are rumors they also contain some information how the texture should be used (if it should repeated in either direction) but couldn't find a hard clue yet.
@@ -75,3 +89,8 @@ There are some sections of which their use seems clear:
 
 3. Byte 0x30 to the end:  
    ASCII data containing an already mentioned absolute path in the file-hierarchy to a dds-file.
+
+### dds-files
+dds-files store the underlying gaphic data of the textures and are esentally images. There are ewxtensions for GIMP or Photoshop to import/edit/export them. [Wikipedia](https://en.wikipedia.org/wiki/DirectDraw_Surface) lokks like a good starding point to find more information about them.
+
+For ETS you should create them with mipmaps and either in the RGB8 (sometimes R8G8B8) or RGBA8 schema, depending on your need for an alpha channel.
