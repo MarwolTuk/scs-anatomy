@@ -67,14 +67,11 @@ A typical tobj-file looks like this (hexdumped):
 
 There are some sections of which their use seems clear:
 
-1. Byte 0x0 to 0x3:
-
+1. Byte 0x0 to 0x3:  
    `01 0a b1 70` is the version of the tobj-file; the game complains inside `game.log.txt` about a wrong version of the tobj-file if set to any other value.
 
-2. Byte 0x29:
-
+2. Byte 0x29:  
    `1f` in our case. Contains the length of the string storing the path.
 
-3. Byte 0x30 to the end:
-
+3. Byte 0x30 to the end:  
    ASCII data containing an already mentioned absolute path in the file-hierarchy to a dds-file.
