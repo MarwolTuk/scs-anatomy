@@ -52,24 +52,39 @@ Once you have at lest one scs-file you'll find yourself in the file-hierarchy de
 The structure and files there look like holding everything together. Their position and names seem to be well defined handles the game searches for. Most of the other stuff is referenced from there, directly or indirectly.
 
 ### sii-files
+Unit serialized file - File storing serialized units 
 
 ### sui-files
+Serialized unit include - The SII-include file without magic mark SiiNUnit 
 
 ## Objects
 
 ### pmd-files
+Prism model descriptor - Storage of the model descriptor data
 
-### pmc-files
+### Additional Filetypes used by Prism3D
+All of this information is a copy of the Modding Wiki article [Documentation/Engine/Formats](https://modding.scssoft.com/wiki/Documentation/Engine/Formats) and only in here for short reference. If the need arises to describe any of those in deep, they get their own sections.
 
-### pma-files
+| Extension | Full name | Purpose | Type | 
+|-----------|-----------|---------|------|
+|.pmg | Prism model geometry         | Storage of the model geometry data          | Binary
+|.pmc | Prism model collision        | Storage of the model dynamic collision data | Binary
+|.pma | Prism model animation        | Storage of the model animation data         | Binary
+|.ppd | Prism prefab descriptor      | Storage of the prefab data                  | Binary
+|.pit | Prism intermediate trait     | Storage of the model traits                 | Text
+|.pim | Prism intermediate model     | Storage of the model geometry data          | Text
+|.pic | Prism intermediate collision | Storage of the model dynamic collision data | Text
+|.pia | Prism intermediate animation | Storage of the model animation data         | Text
+|.pip | Prism intermediate prefab    | Storage of the prefab data                  | Text 
 
 ## Textures
 
 ### mat-files
+Material - Material definition
 automat
 
 ### tobj-files
-tobj-files are binary files, containing one ore more strings, referencing dds-files by their absolute path in the file-hierarchy. There are rumors they also contain some information how the texture should be used (if it should repeated in either direction) but couldn't find a hard clue yet.
+The Modding Wiki describes them as "Texture object - Texture detailed informations". tobj-files are binary files, containing one ore more strings, referencing dds-files by their absolute path in the file-hierarchy. There are rumors they also contain some information how the texture should be used (if it should repeated in either direction) but couldn't find a hard clue yet.
 
 A typical tobj-file looks like this (hexdumped):
 
@@ -91,6 +106,6 @@ There are some sections of which their use seems clear:
    ASCII data containing an already mentioned absolute path in the file-hierarchy to a dds-file.
 
 ### dds-files
-dds-files store the underlying gaphic data of the textures and are esentally images. There are ewxtensions for GIMP or Photoshop to import/edit/export them. [Wikipedia](https://en.wikipedia.org/wiki/DirectDraw_Surface) lokks like a good starding point to find more information about them.
+dds-files store the underlying graphic data of the textures and are essentially images. There are extensions for GIMP or Photoshop to import/edit/export them. [Wikipedia](https://en.wikipedia.org/wiki/DirectDraw_Surface) looks like a good starting point to find more information about them.
 
-For ETS you should create them with mipmaps and either in the RGB8 (sometimes R8G8B8) or RGBA8 schema, depending on your need for an alpha channel.
+For ETS2 you should create them with mipmaps and either in the RGB8 (R8G8B8) or RGBA8 schema, depending on your need for an alpha channel.
