@@ -50,3 +50,26 @@ The structure inside the scs-files seems very well documented inside SCS own Mod
 Once you have at lest one scs-file you'll find yourself in the file-hierarchy described in the last section. If it is a mod, it may contain a folder called `def`, on the base game, you have to extract `def.scs`, as my guessed by its name.
 
 The structure and files there look like holding everything together. Their position and names seem to be well defined handles the game searches for. Most of the other stuff is referenced from there, directly or indirectly.
+
+
+## Textures
+
+### tobj-files
+tobj-files are binary files, containing one ore more strings, referencing dds-files by their absolute path in the file-hierarchy. There are rumors they also contain some information how the texture should be used (if it should repeated in either direction) but couldn't find a hard clue yet.
+
+A typical tobj-file looks like this (hexdumped):
+
+    00000000  01 0a b1 70 00 00 00 00  00 00 00 00 00 00 00 00  |...p............|
+    00000010  00 00 00 00 01 00 00 00  02 00 03 03 03 00 00 00  |................|
+    00000020  00 00 00 00 00 01 00 00  1f 00 00 00 00 00 00 00  |................|
+    00000030  2f 76 65 68 69 63 6c 65  2f 74 72 75 63 6b 2f 64  |/vehicle/truck/d|
+    00000040  61 66 5f 78 66 2f 63 6f  6c 6f 72 2e 64 64 73     |af_xf/color.dds|
+
+There are some sections of which their use seems clear:
+
+  1. Byte 0x0 to 0x3:
+  `01 0a b1 70` is the version of the tobj-file; the game complains inside `game.log.txt` about a wrong version of the tobj-file if set to any other value.
+  2. Byte 0x29:
+  `1f` in our case. Contains the length of the string storing the path.
+  3. Byte 0x30 to the end:
+  ASCII data containing an already mentioned absolute path in the file-hierarchy to a dds-file.
