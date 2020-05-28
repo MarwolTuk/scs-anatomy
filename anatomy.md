@@ -62,7 +62,7 @@ Serialized unit include - The SII-include file without magic mark SiiNUnit
 ### pmd-files
 Prism model descriptor - Storage of the model descriptor data
 
-### Additional Filetypes used by Prism3D
+### Additional Filetypes used by [Prism3D](https://scssoft.com/technology)
 All of this information is a copy of the Modding Wiki article [Documentation/Engine/Formats](https://modding.scssoft.com/wiki/Documentation/Engine/Formats) and only in here for short reference. If the need arises to describe any of those in deep, they get their own sections.
 
 | Extension | Full name | Purpose | Type | 
@@ -84,7 +84,7 @@ Material - Material definition
 automat
 
 ### tobj-files
-The Modding Wiki describes them as "Texture object - Texture detailed informations". tobj-files are binary files, containing one ore more strings, referencing dds-files by their absolute path in the file-hierarchy. There are rumors they also contain some information how the texture should be used (if it should repeated in either direction) but couldn't find a hard clue yet.
+The Modding Wiki describes them as "Texture object - Texture detailed informations". tobj-files are binary files, containing one ore more strings, referencing dds-files by their absolute path in the file-hierarchy. There are rumors they also contain some information how the texture should be used (i.e. in which direction it should be repeated) but I couldn't find a hard clue yet.
 
 A typical tobj-file looks like this (hexdumped):
 
@@ -94,7 +94,7 @@ A typical tobj-file looks like this (hexdumped):
     00000030  2f 76 65 68 69 63 6c 65  2f 74 72 75 63 6b 2f 64  |/vehicle/truck/d|
     00000040  61 66 5f 78 66 2f 63 6f  6c 6f 72 2e 64 64 73     |af_xf/color.dds|
 
-There are some sections of which their use seems clear:
+There are some sections the use of seems clear:
 
 1. Byte 0x0 to 0x3:  
    `01 0a b1 70` is the version of the tobj-file; the game complains inside `game.log.txt` about a wrong version of the tobj-file if set to any other value.
@@ -108,4 +108,4 @@ There are some sections of which their use seems clear:
 ### dds-files
 dds-files store the underlying graphic data of the textures and are essentially images. There are extensions for GIMP or Photoshop to import/edit/export them. [Wikipedia](https://en.wikipedia.org/wiki/DirectDraw_Surface) looks like a good starting point to find more information about them.
 
-For ETS2 you should create them with mipmaps and either in the RGB8 (R8G8B8) or RGBA8 schema, depending on your need for an alpha channel.
+For ETS2 you should create them with mipmaps and either in the RGB8 (R8G8B8) or RGBA8 color schema, depending on your need for an alpha channel.
